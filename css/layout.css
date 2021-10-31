@@ -105,7 +105,7 @@ body > header:first-child > section:first-child a:visited {
 body > header:first-child > section:first-child > h1 + ul > li > a,
 body > header:first-child > section:first-child > h1 + ul > li > a:visited {
     line-height: 52px;
-    padding: 0 20px;
+    padding: 0 16px;
     margin: 0;
     border-radius: 4px;
     display: inline-block;
