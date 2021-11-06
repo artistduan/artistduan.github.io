@@ -4,8 +4,88 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="images/bg/poster.jpg">
-    <title>Jinchen Art</title>
+    <title>Jinchen Art  金辰艺术网</title>
     <link href="css/layout.css" rel="stylesheet" />
+    <style type="text/css">
+    section.x-card {
+        user-select: none;
+    }
+    section.x-card > img {
+        width: 100%; min-height: 80px; background-color: #333; border-top-left-radius: 8px; border-top-right-radius: 8px; display: block;
+    }
+    section.x-card > a, section.x-card > a:visited {
+        color: #CCC; text-decoration: none; background-color: #282828; border: 1px solid #333;
+        width: 100%; height: 50px; padding: 0 30px; margin: 1px 0 0 0; line-height: 50px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: block; box-sizing: border-box; cursor: pointer;
+    }
+    section.x-card > a:hover {
+        color: #EEE; text-decoration: none; background-color: #333; border-color: #444;
+    }
+    section.x-card > a:active {
+        color: #9EF; text-decoration: none; background-color: #282828; border-color: #444;
+    }
+    a.x-link, a.x-link:visited {
+        color: #CCC;
+        font-size: 18px;
+        text-decoration: none;
+        line-height: 24px;
+        background-color: #282828;
+        padding: 24px;
+        margin: 0 0 8px 0;
+        border: 1px solid #333;
+        border-radius: 4px;
+        display: block;
+    }
+    a.x-link:hover {
+        color: #EEE;
+        text-decoration: none;
+        background-color: #333;
+        border-color: #555;
+        box-shadow: #111 1px 1px 4px;
+    }
+    a.x-link:active {
+        color: #9EF;
+        background-color: #282828;
+        text-decoration: none;
+        border-color: #444;
+        box-shadow: #111 0 0 4px;
+    }
+    a.x-link > img {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        margin: 0 8px 0 0;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    a.x-link > svg, a.x-link:visited > svg {
+        fill: #CCC;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        margin: 0 8px 0 0;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    a.x-link:hover > svg {
+        fill: #EEE;
+    }
+    a.x-link:active > svg {
+        fill: #9EF;
+    }
+    a.x-link > span {
+        line-height: 24px;
+        vertical-align: middle;
+        display: inline-block;
+    }
+    a.x-link > span > span {
+        color: #888;
+        font-size: 16px;
+        transition: 0.4s;
+    }
+    a.x-link:hover > span > span {
+        color: #999;
+    }
+    </style>
 </head>
 <body>
     <header>
@@ -27,11 +107,22 @@
             </ul>
         </section>
     </header>
-    <section style="min-height: 640px; margin-bottom: 60px; ">
-        <section>
-            <span>Coming soon...</span>
+    <section style="margin-bottom: 60px; ">
+        <section class="x-card" >
+            <img alt="Real &amp; Unreal" src="images/bg/card-realunreal.jpg" />
+            <a href="https://jinchen.org/realunreal"><span>Learn more &nbsp; | &nbsp; 了解详情 &nbsp;&gt;</span></a>
         </section>
-        <h2>Other links</h2>
+        <section>
+            <a class="x-link" href="https://jinchen.org/watercolor"><span>江西水彩<span>&nbsp; Jiangxi Watercolor Painting</span></span>
+            </a><a class="x-link" href="https://jinchen.org/decoration"><span>装饰设计<span>&nbsp; Decoration &amp; Design</span></span>
+            </a>
+        </section>
+    </section>
+    <section style="margin-bottom: 100px; ">
+        <section class="x-card" >
+            <img alt="Kingcean Design" src="images/bg/card-kingceandesign.jpg" />
+            <a href="https://jinchen.org/design"><span>Learn more &nbsp; | &nbsp; 了解详情 &nbsp;&gt;</span></a>
+        </section>
         <section>
             <a class="link-tile-wide" href="https://kingcean.net"><span>Kingcean.net</span>
             </a><a class="link-tile-wide" href="https://kingcean.org"><span>Kingcean.org</span>
