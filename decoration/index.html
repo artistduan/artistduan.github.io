@@ -6,6 +6,53 @@
     <meta property="og:image" content="../images/bg/poster.jpg">
     <title>Decoration - Jinchen Art</title>
     <link href="../css/layout.css" rel="stylesheet" />
+    <style type="text/css">
+    .x-bg-img-static {
+        background-repeat: no-repeat;
+        background-position: center top;
+    }
+    .x-bg-img-repeat {
+        background-repeat: repeat;
+        background-position: center top;
+    }
+    .x-banner-slim {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    section.x-section-works {
+        margin-bottom: 120px;
+    }
+    section.x-section-works > h2 {
+        margin-top: 40px;
+        cursor: default;
+        user-select: none;
+    }
+    section.x-section-works > section {
+        display: flex;
+        flex-wrap: wrap;
+        user-select: none;
+    }
+    section.x-section-works > section > img {
+        background-color: #333;
+        width: 244px;
+        height: 200px;
+        margin: 0 6px 6px 0;
+        border-radius: 4px;
+        object-fit: cover;
+        transition: 0.2s;
+        cursor: default;
+    }
+    section.x-section-works > section > img:hover {
+        filter: contrast(1.2);
+    }
+    @media screen and (max-width:560px) {
+    section.x-section-works > section > img {
+        width: 100%;
+        height: 320px;
+        margin: 0 0 10px 0;
+    }
+    }
+    </style>
 </head>
 <body>
     <header>
@@ -27,15 +74,42 @@
             </ul>
         </section>
     </header>
-    <section style="min-height: 640px; margin-bottom: 60px; ">
-        <section>
-            <span>Coming soon...</span>
+    <section>
+        <h2 style="color: #67A; font-size: 32px; font-weight: lighter; line-height: 50px; user-select: none; cursor: default; " >装潢 · 建筑 · 园林</h2>
+    </section>
+    <section class="x-bg-img-static" style="background-image: url(../images/bg/banner-3dblocks.jpg); border-top: 1px solid #333; border-bottom: 1px solid #333; padding: 0; " >
+        <section class="x-banner-slim" style="height: 400px; " >
+            <div style="color: #766; font-weight: lighter; line-height: 40px; text-align: center; padding: 80px 0 20px 0; ">
+                <span style="font-size: 24px; line-height: 60px; " >追求设计创意与工艺创新</span><br />
+                <span style="font-size: 18px; " >不同的场所　不同的氛围
+                    <br />有不同的特色
+                    <br />在资金计划范围内最大限度营造最佳效果
+                    <br />将品味留给今天　将品质留给明天</span>
+                </div>
         </section>
-        <h2>Other links</h2>
+    </section>
+    <section class="x-section-works" >
+        <h2>室内设计</h2>
         <section>
-            <a class="link-tile-wide" href="https://kingcean.net"><span>Kingcean.net</span>
-            </a><a class="link-tile-wide" href="https://kingcean.org"><span>Kingcean.org</span>
-            </a>
+            <img alt="领导办公室" src="images/office-lead.jpg" />
+            <img alt="会议室" src="images/meeting-room-m.jpg" />
+            <img alt="多功能会议室" src="images/conf-room-m.jpg" />
+            <img alt="会议室" src="images/meeting-room-l.jpg" />
+            <img alt="会议室" src="images/meeting-room-r.jpg" />
+            <img alt="接待室" src="images/reception-room.jpg" />
+            <img alt="洗手间" src="images/lsxdhotel-toilet-3.jpg" />
+            <img alt="商务标间" src="images/hotel-guest-room-1.jpg" />
+            <img alt="商务标间" src="images/hotel-guest-room-2.jpg" />
+            <img alt="商务标间" src="images/hotel-guest-room-3.jpg" />
+            <img alt="大堂" src="images/lsxdhotel-lobby-s.jpg" />
+            <img alt="大堂走廊" src="images/lsxdhotel-corridor.jpg" />
+        </section>
+        <h2>室外设计</h2>
+        <section>
+            <img alt="江西体育馆" src="images/jx-gymnasium.jpg" />
+            <img alt="江西师范大学历史柱林" src="images/jxnu-sq-f.jpg" />
+            <img alt="景秀湾山庄别墅" src="images/villa-jingxiubay.jpg" />
+            <img alt="江西体育馆大北门" src="images/jx-gymnasium-gate-nor.jpg" />
         </section>
     </section>
     <footer>
