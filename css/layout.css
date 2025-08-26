@@ -84,6 +84,24 @@ body > header:first-child > section:first-child > h1 + ul {
     overflow: hidden;
     user-select: none;
 }
+body > header:first-child > section:first-child > h1 + ul::-webkit-scrollbar {
+    height: 8px;
+    display: none;
+}
+body > header:first-child > section:first-child > h1 + ul:hover::-webkit-scrollbar {
+    display: block;
+}
+body > header:first-child > section:first-child > h1 + ul::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+body > header:first-child > section:first-child > h1 + ul::-webkit-scrollbar-thumb {
+    background-color: rgba(128,128,128,0.1);
+    height: 8px;
+    border-radius: 4px;
+}
+body > header:first-child > section:first-child > h1 + ul::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(128,128,128,0.4);
+}
 body > header:first-child > section:first-child > h1 + ul > li {
     font-weight: normal;
     font-style: normal;
