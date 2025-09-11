@@ -4,8 +4,105 @@ let site = {};
 
     let rootContext;
     let info = {};
-    let strings = {};
+    let strings = {
+        en: {
+            name: "Name",
+            articles: "Articles",
+            articleMenu: "In this article",
+            architecture: "Architecture",
+            website: "Website",
+            officialWebsite: "Official website",
+            log: "Log",
+            blog: "Blog",
+            blogs: "Blogs",
+            home: "Home",
+            about: "About",
+            games: "Games",
+            videos: "Videos",
+            screenshots: "Screenshots",
+            photos: "Photos",
+            pics: "Pictures",
+            files: "Files",
+            libs: "Libraries",
+            packages: "Packages",
+            tools: "Tools",
+            docs: "Docs",
+            books: "Books",
+            search: "Search",
+            settings: "Settings",
+            tutorial: "Tutorial",
+            learnMore: "Learn more",
+            back: "Back",
+            goHome: "Back to homepage",
+            loading: "Loading…",
+            seeAlso: "See also",
+            loadFailed: "Load failed.",
+            top: "Top",
+            next: "Next",
+            previous: "Previous",
+            projects: "Projects",
+            features: "Features",
+            installation: "Installation",
+            sourceCode: "Source",
+            community: "Community",
+            otherLinks: "Other links",
+            more: "More…",
+            getDetails: "Get details"
+        },
+        "zh-Hans": {
+            name: "名称",
+            articles: "文章",
+            articleMenu: "文章目录",
+            architecture: "架构",
+            website: "网站",
+            officialWebsite: "官网",
+            log: "日志",
+            blog: "博客",
+            blogs: "博客",
+            home: "首页",
+            about: "关于",
+            games: "游戏",
+            videos: "视频",
+            screenshots: "截图",
+            photos: "照片",
+            pics: "图片",
+            files: "文件",
+            libs: "库",
+            packages: "包",
+            tools: "工具",
+            docs: "文档",
+            books: "书",
+            search: "搜索",
+            settings: "设置",
+            tutorial: "教程",
+            learnMore: "了解详情",
+            back: "返回",
+            goHome: "返回首页",
+            loading: "加载中…",
+            seeAlso: "参考",
+            loadFailed: "加载失败。",
+            top: "返回顶部",
+            next: "下一篇",
+            previous: "上一篇",
+            projects: "项目",
+            features: "功能",
+            installation: "安装",
+            sourceCode: "源码",
+            community: "社区",
+            otherLinks: "更多链接",
+            more: "更多…",
+            getDetails: "获取详情"
+        },
+        value: {}
+    };
     let settings = {};
+
+    function initMarket() {
+        if (strings.mkt) return strings.mkt;
+        let lang = navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage;
+        strings.mkt = lang.indexOf("zh") === 0 ? "zh-Hans" : "en";
+        return strings.mkt;
+    }
 
     function scrollToTop() {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -190,7 +287,7 @@ let site = {};
 
     function renderArticle(id) {
         let context = rootContext;
-        if (!context) return;
+        if (!context) return undefined;
         highlightSelected(undefined);
         resetContentMenu();
         setChildChildren("note", undefined);
@@ -221,6 +318,24 @@ let site = {};
                 break;
             }
 
+            if (!item) {
+                let redir = info.redir;
+                let newId;
+                if (redir) newId = redir[id];
+                if (newId) {
+                    id = newId;
+                    for (let i = 0; i < list.length; i++) {
+                        let ele = list[i];
+                        if (!ele || ele.id !== id) continue;
+                        item = ele;
+                        if (i > 0) setNextButton("previousButton", (list[i - 1] || {}).id);
+                        if (i < list.length - 1) setNextButton("nextButton", (list[i + 1] || {}).id);
+                        if (nextContainer && !settings.disableNext && list.length > 1) delete nextContainer.style;
+                        break;
+                    }
+                }
+            }
+
             sub = getSubFile(item, sub).file;
         }
 
@@ -247,11 +362,11 @@ let site = {};
 
             context.refresh();
             scrollToTop();
-            return;
+            return undefined;
         }
 
         setChildChildren("title", item.name);
-        genNotification(strings.loading || "Loading…");
+        genNotification(site.getString("loading"));
         context.refresh();
         let relaPath = "/" + (settings.rootPath || "blog");
         try {
@@ -375,7 +490,7 @@ let site = {};
                 if (relatedList.length > 0) {
                     relatedContainer.children.push({
                         tagName: "h2",
-                        children:　strings.seeAlso || "See also"
+                        children: site.getString("seeAlso")
                     });
                     relatedContainer.children.push({
                         tagName: "ul",
@@ -389,11 +504,12 @@ let site = {};
             highlightSelected(item.id);
             context.refresh();
         }, function (r) {
-            genNotification(strings.loadFailed || "Load failed.");
+            genNotification(site.getString("loadFailed"));
             context.refresh();
             scrollToTop();
         });
         scrollToTop();
+        return sub ? (id + "/" + sub) : id;
     }
 
     function genMenu(list, callback) {
@@ -529,8 +645,8 @@ let site = {};
     }
 
     function configUrl() {
-        let lang = navigator.language || navigator.userLanguage || navigator.browserLanguage || navigator.systemLanguage;
-        return settings.menuPath || (lang.indexOf("zh") === 0 ? "zh-Hans.json" : "en.json");
+        if (settings.menuPath) return settings.menuPath;
+        return initMarket() + ".json";
     }
 
     function render() {
@@ -541,13 +657,14 @@ let site = {};
         let id = site.firstQuery();
         $.get(configUrl()).then(function (r) {
             if (!r) return;
-            setChildChildren("blogTitle", r.name || "Blogs");
+            setChildChildren("blogTitle", r.name || site.getString("articles"));
             info.list = getMenu(r.list, r.wiki);
+            info.redir = r.redir;
             info.name = r.name;
             setChildChildren("articles", genMenu());
             renderArticle(id);
         }, function (r) {
-            genNotification(strings.loadFailed || "Load failed.");
+            genNotification(site.getString("loadFailed"));
             rootContext.refresh();
         });
     }
@@ -598,17 +715,48 @@ let site = {};
         return id;
     };
 
+    site.getString = function (key, element) {
+        if (!key || typeof key !== "string") return undefined;
+        let s = strings.value[key];
+        if (!s) {
+            let mkt = initMarket();
+            s = (strings[mkt] || strings["en"])[key];
+        }
+
+        if (!s) return s;
+        if (element) {
+            if (typeof element === "string") element = document.getElementById(element);
+            if (element && element.tagName) element.innerText = s;
+        }
+
+        return s;
+    }
+
     site.head = function (ext, menu, needInsert) {
         let cntEle = document.createElement("header");
         cntEle.id = "page_head";
-        let i = ext.indexOf(".");
-        let name = "kingcean";
-        if (i > 0) {
-            name = ext.substring(0, i);
-            ext = ext.substring(i + 1);
+        let name = "Kingcean";
+        let link;
+        let glue = false;
+        if (typeof ext === "string") {
+            let i = ext.indexOf(".");
+            if (i == 0) {
+                ext = ext.substring(1);
+            } else if (i > 0) {
+                name = ext.substring(0, i);
+                ext = ext.substring(i + 1);
+            }
+        } else if (ext && ext.name) {
+            if (ext.name) name = ext.name;
+            link = ext.url;
+            glue = ext.glue;
+            ext = ext.ext || "com";
+        } else {
+            ext = "org";
         }
 
-        cntEle.innerHTML = "<section><h1><a href=\"https://" + name.toLowerCase() + "." + ext + "\"><strong>" + name + "</strong><span>." + ext + "</span></a></h1><ul>"
+        if (!link) link = "https://" + name.toLowerCase() + "." + ext;
+        cntEle.innerHTML = "<section><h1><a href=\"" + link + "\"><strong>" + name + "</strong><span>" + (glue ? "" : ".") + ext + "</span></a></h1><ul>"
             + menu.map(ele => "<li><a href=\"" + ele.url + "\">" + ele.name + "</a></li>").join("")
             + "</ul></section>";
         if (needInsert) document.body.insertBefore(cntEle, document.body.children[0]);
@@ -631,7 +779,8 @@ let site = {};
     };
 
     site.goto = function (id) {
-        renderArticle(id);
+        let newId = renderArticle(id);
+        if (newId) id = newId;
         if (id) history.pushState({ id: id }, "", "?" + id);
         else history.pushState({}, "", "./");
     }
@@ -675,7 +824,7 @@ let site = {};
                     tagName: "main",
                     children: [{
                         tagName: "em",
-                        children: strings.loading || "Loading…"
+                        children: site.getString("loading")
                     }],
                     onInit(c) {
                         let mdEle = c.element();
@@ -742,7 +891,7 @@ let site = {};
                                         scrollToTop();
                                     }
                                 },
-                                children: "⇮ " + (strings.top || "Top")
+                                children: "⇮ " + (site.getString("top"))
                             }]
                         });
                         if (levels.length == 1) levels.push(levels[0] + 1);
@@ -774,24 +923,24 @@ let site = {};
                     children: [{
                         key: "previousButton",
                         tagName: "a",
-                        props: { disabled: true, href: "javascript:void(0)" },
+                        props: { disabled: true, href: "javascript:void(0)", title: site.getString("previous") },
                         children: "<",
                         on: {
                             click(ev) {
                                 let m = getChildModel("previousButton");
-                                if (!m || !m.data) return;
+                                if (!m) return;
                                 site.goto(m.data);
                             }
                         }
                     }, {
                         key: "nextButton",
                         tagName: "a",
-                        props: { disabled: true, href: "javascript:void(0)" },
-                        children: (strings.next || "Next") + "　>",
+                        props: { disabled: true, href: "javascript:void(0)", title: site.getString("next") },
+                        children: (site.getString("next")) + "　>",
                         on: {
                             click(ev) {
                                 let m = getChildModel("nextButton");
-                                if (!m || !m.data) return;
+                                if (!m) return;
                                 site.goto(m.data);
                             }
                         }
