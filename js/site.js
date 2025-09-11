@@ -509,7 +509,7 @@ let site = {};
             scrollToTop();
         });
         scrollToTop();
-        return sub ? (id + "/" + sub) : id;
+        return id;
     }
 
     function genMenu(list, callback) {
@@ -779,8 +779,7 @@ let site = {};
     };
 
     site.goto = function (id) {
-        let newId = renderArticle(id);
-        if (newId) id = newId;
+        renderArticle(id);
         if (id) history.pushState({ id: id }, "", "?" + id);
         else history.pushState({}, "", "./");
     }
