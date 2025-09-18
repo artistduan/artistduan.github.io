@@ -7,6 +7,7 @@
     <title>Jinchen Art</title>
     <link href="https://cdn.jsdelivr.net/npm/hje@2.1.0/docs/css/site.art.css" rel="stylesheet" />
     <link href="../css/current.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.1.0/docs/js/site.js" ></script>
     <style type="text/css">
     section > img.x-img-wide {
         width: 100%; min-height: 80px; max-height: 400px; background-color: #333; border-radius: 4px; object-fit: cover; transition: 0.6s; user-select: none;
@@ -57,23 +58,33 @@
         display: block;
     }
     </style>
+    <script type="text/javascript" src="../js/current.js" ></script>
+    <script type="text/javascript">
+    function onInit() {
+        if (!curSite.translate({
+            "title": ""
+        })) return;
+        site.setElementProp("button-random", null, "随机选择");
+        site.setElementProp("button-works", null, "所有作品");
+    }
+    </script>
 </head>
-<body>
+<body onload="onInit()">
     <header>
         <section>
             <h1><a href="https://jinchen.org"><em>Jinchen Art</em></a></h1>
             <ul>
-                <li title="虚实之间">
-                    <a href="https://realunreal.jinchen.org">Real &amp; Unreal</a>
+                <li>
+                    <a href="https://realunreal.jinchen.org" id="title-realun">Real &amp; Unreal</a>
                 </li>
-                <li title="《江西水彩》">
-                    <a href="https://jinchen.org/watercolor">Jiangxi Watercolor</a>
+                <li>
+                    <a href="https://jinchen.org/watercolor" id="title-jxwatercolor">Jiangxi Watercolor</a>
                 </li>
-                <li class="state-sel" title="来自 Kingcean 的设计">
-                    <a href="https://jinchen.org/design">Kingcean Design</a>
+                <li class="state-sel">
+                    <a href="https://jinchen.org/design" id="title-kingcean">Kingcean Design</a>
                 </li>
-                <li title="金辰装饰设计">
-                    <a href="https://jinchen.org/decoration">Decoration</a>
+                <li>
+                    <a href="https://jinchen.org/decoration" id="title-decoration">Decoration</a>
                 </li>
             </ul>
         </section>
@@ -97,8 +108,8 @@
             <img id="work-3" class="x-img-wide" alt="Royal Design" src="images/rwp200906070.jpg" />
         </section>
         <section class="link-tile-wide">
-            <a id="action-random" href="javascript:void(0);" style="display: none; " ><span>Random</span>
-            </a><a href="https://github.com/artistduan/artistduan.github.io/tree/master/design/images"><span>All works <span style="color: #39C; ">&nbsp;&gt;</span></span>
+            <a id="action-random" href="javascript:void(0);" style="display: none; " ><span id="button-random">Random</span>
+            </a><a href="https://github.com/artistduan/artistduan.github.io/tree/master/design/images"><span id="button-works">All works</span> <span style="color: #39C; ">&nbsp;&gt;</span>
             </a>
         </section>
     </section>

@@ -7,6 +7,7 @@
     <title>Decoration - Jinchen Art</title>
     <link href="https://cdn.jsdelivr.net/npm/hje@2.1.0/docs/css/site.art.css" rel="stylesheet" />
     <link href="../css/current.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.1.0/docs/js/site.js" ></script>
     <style type="text/css">
     .x-bg-img-static {
         background-repeat: no-repeat;
@@ -54,23 +55,31 @@
     }
     }
     </style>
+    <script type="text/javascript" src="../js/current.js" ></script>
+    <script type="text/javascript">
+    function onInit() {
+        curSite.translate({
+            "title": ""
+        });
+    }
+    </script>
 </head>
-<body>
+<body onload="onInit()">
     <header>
         <section>
             <h1><a href="https://jinchen.org"><em>Jinchen Art</em></a></h1>
             <ul>
-                <li title="虚实之间">
-                    <a href="https://realunreal.jinchen.org">Real &amp; Unreal</a>
+                <li>
+                    <a href="https://realunreal.jinchen.org" id="title-realun">Real &amp; Unreal</a>
                 </li>
-                <li title="《江西水彩》">
-                    <a href="https://jinchen.org/watercolor">Jiangxi Watercolor</a>
+                <li>
+                    <a href="https://jinchen.org/watercolor" id="title-jxwatercolor">Jiangxi Watercolor</a>
                 </li>
-                <li title="来自 Kingcean 的设计">
-                    <a href="https://jinchen.org/design">Kingcean Design</a>
+                <li>
+                    <a href="https://jinchen.org/design" id="title-kingcean">Kingcean Design</a>
                 </li>
-                <li class="state-sel" title="金辰装饰设计">
-                    <a href="https://jinchen.org/decoration">Decoration</a>
+                <li class="state-sel">
+                    <a href="https://jinchen.org/decoration" id="title-decoration">Decoration</a>
                 </li>
             </ul>
         </section>

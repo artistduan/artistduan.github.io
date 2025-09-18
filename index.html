@@ -6,6 +6,7 @@
     <meta property="og:image" content="images/bg/poster.jpg">
     <title>Jinchen Art  金辰艺术网</title>
     <link href="https://cdn.jsdelivr.net/npm/hje@2.1.0/docs/css/site.art.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/hje@2.1.0/docs/js/site.js" ></script>
     <style type="text/css">
     section.x-card {
         user-select: none;
@@ -46,23 +47,33 @@
     }
     }
     </style>
+    <script type="text/javascript" src="./js/current.js" ></script>
+    <script type="text/javascript">
+    function onInit() {
+        curSite.translate({
+            "title": "",
+            "button-details-1": "learnMore",
+            "button-details-2": "learnMore",
+        });
+    }
+    </script>
 </head>
-<body>
+<body onload="onInit()">
     <header>
         <section>
             <h1><a href="https://jinchen.org"><em>Jinchen Art</em></a></h1>
             <ul>
-                <li title="虚实之间">
-                    <a href="https://realunreal.jinchen.org">Real &amp; Unreal</a>
+                <li>
+                    <a href="https://realunreal.jinchen.org" id="title-realun">Real &amp; Unreal</a>
                 </li>
-                <li title="《江西水彩》">
-                    <a href="https://jinchen.org/watercolor">Jiangxi Watercolor</a>
+                <li>
+                    <a href="https://jinchen.org/watercolor" id="title-jxwatercolor">Jiangxi Watercolor</a>
                 </li>
-                <li title="来自 Kingcean 的设计">
-                    <a href="https://jinchen.org/design">Kingcean Design</a>
+                <li>
+                    <a href="https://jinchen.org/design" id="title-kingcean">Kingcean Design</a>
                 </li>
-                <li title="金辰装饰设计">
-                    <a href="https://jinchen.org/decoration">Decoration</a>
+                <li>
+                    <a href="https://jinchen.org/decoration" id="title-decoration">Decoration</a>
                 </li>
             </ul>
         </section>
@@ -71,7 +82,7 @@
         <section class="x-card" >
             <img class="for-pc" alt="Real &amp; Unreal" src="images/bg/card-realunreal.jpg" />
             <img class="for-mobile" alt="Real &amp; Unreal" src="images/bg/card-realunreal-mobile.jpg" />
-            <a class="x-link-more" href="https://jinchen.org/realunreal"><span>Learn more &nbsp; | &nbsp; 了解详情 - 虚实之间</span></a>
+            <a class="x-link-more" href="https://jinchen.org/realunreal"><span id="button-details-1">Learn more</span></a>
         </section>
         <section>
             <a class="link-long-button" href="https://jinchen.org/watercolor"><span>江西水彩<span>&nbsp; Jiangxi Watercolor Painting</span></span>
@@ -83,7 +94,7 @@
         <section class="x-card" >
             <img class="for-pc" alt="Kingcean Design" src="images/bg/card-kingceandesign.jpg" />
             <img class="for-mobile" alt="Kingcean Design" src="images/bg/card-kingceandesign-mobile.jpg" />
-            <a class="x-link-more" href="https://jinchen.org/design"><span>Learn more &nbsp; | &nbsp; 了解详情</span></a>
+            <a class="x-link-more" href="https://jinchen.org/design"><span id="button-details-2">Learn more</span></a>
         </section>
         <section class="link-tile-wide">
             <a href="https://kingcean.net"><span>Kingcean.net</span>
